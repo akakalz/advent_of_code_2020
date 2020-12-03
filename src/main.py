@@ -1,9 +1,10 @@
 from day_01 import Day1
 from day_02 import Day2
+from day_03 import Day3
 from common import pad_left
 
 
-days = [Day1, Day2]
+days = [Day1, Day2, Day3]
 
 if __name__ == "__main__":
     for i, Day in enumerate(days, start=1):
