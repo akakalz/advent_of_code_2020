@@ -1,5 +1,5 @@
 import pytest
-from .common import pad_left, get_input
+from common import pad_left, get_input
 
 
 def test_get_input(generic_input_file):

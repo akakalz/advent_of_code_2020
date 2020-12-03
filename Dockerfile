@@ -6,7 +6,8 @@ ENTRYPOINT ["python", "main.py"]
 
 FROM python:3.9-alpine as tester
 WORKDIR /src
-RUN pip install pytest
+COPY test-requirements.txt .
+RUN pip install -r test-requirements.txt
 COPY ./src .
 COPY ./tests .
-ENTRYPOINT ["pytest"]
+ENTRYPOINT ["./run_tests.sh"]

@@ -4,8 +4,8 @@ from day import Day
 
 
 class Day1(Day):
-    def __init__(self, number, file_name):
-        super().__init__(number, file_name)
+    def __init__(self, file_name):
+        super().__init__(1, file_name)
         self.input_data = [int(x) for x in self.input_data]
 
     def part_1(self):
