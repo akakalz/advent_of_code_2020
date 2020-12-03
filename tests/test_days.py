@@ -1,4 +1,4 @@
-# import pytest
+import pytest
 from day_01 import Day1
 from day_02 import Day2
 from day_03 import Day3
@@ -30,14 +30,19 @@ def test_day_2():
     assert actual_part_2_answer == expected_part_2_answer
 
 
-def test_day_3():
+@pytest.mark.parametrize(
+    "slope,expected_trees", [
+        ((1, 1), 38),
+        ((2, 2), 19),
+        ((3, 3), 12),
+        ((4, 4), 9),
+        ((5, 5), 7),
+    ]
+)
+def test_day_3(slope, expected_trees):
     # arrange
     test_obj = Day3('input/day_three_input.txt')
-    expected_part_1_answer = 2
-    expected_part_2_answer = 1
     # act
-    actual_part_1_answer = test_obj.part_1()
-    actual_part_2_answer = test_obj.part_2()
+    actual_trees = test_obj._traverse_slope(slope)
     # assert
-    assert actual_part_1_answer == expected_part_1_answer
-    assert actual_part_2_answer == expected_part_2_answer
+    assert actual_trees == expected_trees
