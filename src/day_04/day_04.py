@@ -24,22 +24,10 @@ class Day4(Day):
         }
 
     def part_1(self):
-        answer = 0
-
-        passports = self.parse_passports()
-
-        answer += sum([1 for x in passports if self.valid_passport_part_1(x)])
-
-        return answer
+        return sum([1 for x in self.parse_passports() if self.valid_passport_part_1(x)])
 
     def part_2(self):
-        answer = 0
-
-        passports = self.parse_passports()
-
-        answer += sum([1 for x in passports if self.valid_passport_part_2(x)])
-
-        return answer
+        return sum([1 for x in self.parse_passports() if self.valid_passport_part_2(x)])
 
     def parse_passports(self):
         passports = []
@@ -60,10 +48,7 @@ class Day4(Day):
         for field in self.required_fields:
             if field not in passport:
                 missing.append(field)
-        if not missing:
-            return True
-        else:
-            return False
+        return not missing
 
     def valid_passport_part_2(self, passport):
         return all([validate(passport.get(field))
