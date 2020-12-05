@@ -8,8 +8,6 @@ class Day3(Day):
         super().__init__(3, file_name)
 
     def part_1(self):
-        answer = 0
-
         slope = (1, 3)
         answer = self._traverse_slope(slope)
 

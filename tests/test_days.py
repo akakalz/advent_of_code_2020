@@ -4,6 +4,7 @@ from day_02 import Day2
 from day_03 import Day3
 from day_04 import Day4
 from day_05 import Day5
+from day_06 import Day6
 
 
 def test_day_1():
@@ -97,3 +98,14 @@ def test_day_5_row_col_parsing(line, expected_id):
     actual_part_1_answer = test_obj.part_1()
     # assert
     assert actual_part_1_answer == expected_part_1_answer
+
+
+@pytest.mark.skip(reason="day 6 not available yet")
+def test_day_6():
+    # arrange
+    test_obj = Day6('input/generic_input.txt')
+    # act
+    test_obj.part_1()
+    test_obj.part_2()
+    # assert
+    assert False
