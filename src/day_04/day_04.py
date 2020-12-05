@@ -30,18 +30,16 @@ class Day4(Day):
         return sum([1 for x in self.parse_passports() if self.valid_passport_part_2(x)])
 
     def parse_passports(self):
-        passports = []
         passport = {}
 
         for line in self.input_data:
             if line == "":
-                passports.append(passport)
+                yield passport
                 passport = {}
             else:
                 pairs = line.split(" ")
                 for pair in pairs:
                     passport.update(**{k: v for (k, v) in [x.split(":") for x in pairs]})
-        return passports
 
     def valid_passport_part_1(self, passport):
         missing = []
