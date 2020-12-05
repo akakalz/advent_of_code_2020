@@ -13,6 +13,15 @@ pid_pattern = re.compile(r'^\d{9}$')
 class Day4(Day):
     def __init__(self, file_name):
         super().__init__(4, file_name)
+        self.required_fields = {
+            'byr': Day4.valid_byr,
+            'iyr': Day4.valid_iyr,
+            'eyr': Day4.valid_eyr,
+            'hgt': Day4.valid_hgt,
+            'hcl': Day4.valid_hcl,
+            'ecl': Day4.valid_ecl,
+            'pid': Day4.valid_pid,
+        }
 
     def part_1(self):
         answer = 0
@@ -53,43 +62,34 @@ class Day4(Day):
         return answer
 
     def valid_passport_part_1(self, passport):
-        if 'byr' in passport and \
-                'iyr' in passport and \
-                'eyr' in passport and \
-                'hgt' in passport and \
-                'hcl' in passport and \
-                'ecl' in passport and \
-                'pid' in passport:
+        missing = []
+        for field in self.required_fields:
+            if field not in passport:
+                missing.append(field)
+        if not missing:
             return True
         else:
             return False
 
     def valid_passport_part_2(self, passport):
-        '''
-        byr (Birth Year) - four digits; at least 1920 and at most 2002.
-        iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-        eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
-        hgt (Height) - a number followed by either cm or in:
-            If cm, the number must be at least 150 and at most 193.
-            If in, the number must be at least 59 and at most 76.
-        hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-        ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-        pid (Passport ID) - a nine-digit number, including leading zeroes.
-        cid (Country ID) - ignored, missing or not.
-        '''
-        if 1920 <= int(passport.get('byr', 0)) <= 2002 and \
-                2010 <= int(passport.get('iyr', 0)) <= 2020 and \
-                2020 <= int(passport.get('eyr', 0)) <= 2030 and \
-                self.valid_hgt(passport.get('hgt', '')) and \
-                self.valid_hcl(passport.get('hcl', '')) and \
-                self.valid_ecl(passport.get('ecl', '')) and \
-                self.valid_pid(passport.get('pid', '')):
-            return True
-        else:
-            return False
+        return all([validate(passport.get(field))
+                    for field, validate in self.required_fields.items()])
 
-    def valid_hgt(self, hgt):
-        match = hgt_pattern.match(hgt)
+    @staticmethod
+    def valid_byr(byr):
+        return 1920 <= (int(byr) if byr is not None else 0) <= 2002
+
+    @staticmethod
+    def valid_iyr(iyr):
+        return 2010 <= (int(iyr) if iyr is not None else 0) <= 2020
+
+    @staticmethod
+    def valid_eyr(eyr):
+        return 2020 <= (int(eyr) if eyr is not None else 0) <= 2030
+
+    @staticmethod
+    def valid_hgt(hgt):
+        match = hgt_pattern.match(hgt if hgt is not None else '')
         if match:
             if match.group(2) == 'in' and (59 <= int(match.group(1)) <= 76):
                 return True
@@ -97,23 +97,17 @@ class Day4(Day):
                 return True
         return False
 
-    def valid_hcl(self, hcl):
-        match = hcl_pattern.match(hcl)
-        if match:
-            return True
-        else:
-            return False
+    @staticmethod
+    def valid_hcl(hcl):
+        match = hcl_pattern.match(hcl if hcl is not None else '')
+        return bool(match)
 
-    def valid_ecl(self, ecl):
-        match = ecl_pattern.match(ecl)
-        if match:
-            return True
-        else:
-            return False
+    @staticmethod
+    def valid_ecl(ecl):
+        match = ecl_pattern.match(ecl if ecl is not None else '')
+        return bool(match)
 
-    def valid_pid(self, pid):
-        match = pid_pattern.match(pid)
-        if match:
-            return True
-        else:
-            return False
+    @staticmethod
+    def valid_pid(pid):
+        match = pid_pattern.match(pid if pid is not None else '')
+        return bool(match)
