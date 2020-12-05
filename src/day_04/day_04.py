@@ -26,17 +26,7 @@ class Day4(Day):
     def part_1(self):
         answer = 0
 
-        passports = []
-        passport = {}
-
-        for line in self.input_data:
-            if line == "":
-                passports.append(passport)
-                passport = {}
-            else:
-                pairs = line.split(" ")
-                for pair in pairs:
-                    passport.update(**{k: v for (k, v) in [x.split(":") for x in pairs]})
+        passports = self.parse_passports()
 
         answer += sum([1 for x in passports if self.valid_passport_part_1(x)])
 
@@ -45,6 +35,13 @@ class Day4(Day):
     def part_2(self):
         answer = 0
 
+        passports = self.parse_passports()
+
+        answer += sum([1 for x in passports if self.valid_passport_part_2(x)])
+
+        return answer
+
+    def parse_passports(self):
         passports = []
         passport = {}
 
@@ -56,10 +53,7 @@ class Day4(Day):
                 pairs = line.split(" ")
                 for pair in pairs:
                     passport.update(**{k: v for (k, v) in [x.split(":") for x in pairs]})
-
-        answer += sum([1 for x in passports if self.valid_passport_part_2(x)])
-
-        return answer
+        return passports
 
     def valid_passport_part_1(self, passport):
         missing = []
