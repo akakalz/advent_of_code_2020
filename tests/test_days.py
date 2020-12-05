@@ -3,6 +3,7 @@ from day_01 import Day1
 from day_02 import Day2
 from day_03 import Day3
 from day_04 import Day4
+from day_05 import Day5
 
 
 def test_day_1():
@@ -77,3 +78,22 @@ def test_day_4():
     # assert
     assert actual_part_1_answer == expected_part_1_answer
     assert actual_part_2_answer == expected_part_2_answer
+
+
+@pytest.mark.parametrize(
+    "line,expected_id", [
+        (['FFFBFFFRRL'], 8 * 8 + 6),
+        (['FFFBBBFLLL'], 14 * 8 + 0),
+        (['BFFFBFBRLR'], 69 * 8 + 5),
+    ]
+)
+def test_day_5_row_col_parsing(line, expected_id):
+    # arrange
+    test_obj = Day5('input/generic_input.txt')
+    test_obj.input_data = line  # replace the data with out own
+    # act
+    expected_part_1_answer = expected_id
+    # act
+    actual_part_1_answer = test_obj.part_1()
+    # assert
+    assert actual_part_1_answer == expected_part_1_answer
