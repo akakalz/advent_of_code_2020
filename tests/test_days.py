@@ -5,6 +5,7 @@ from day_03 import Day3
 from day_04 import Day4
 from day_05 import Day5
 from day_06 import Day6
+from day_07 import Day7
 
 
 def test_day_1():
@@ -100,10 +101,44 @@ def test_day_5_row_col_parsing(line, expected_id):
     assert actual_part_1_answer == expected_part_1_answer
 
 
-@pytest.mark.skip(reason="day 6 not available yet")
-def test_day_6():
+@pytest.mark.parametrize(
+    "input_data,expected_count", [
+        (['ab', '', 'abc', ''], 5),
+        (['ab', 'abcd', 'abc', ''], 4),
+        (['ab', '', 'abc', 'ab', '', 'ef', 'eg', ''], 8),
+    ]
+)
+def test_day_6_part_1(input_data, expected_count):
     # arrange
     test_obj = Day6('input/generic_input.txt')
+    test_obj.input_data = input_data
+    # act
+    actual_count = test_obj.part_1()
+    # assert
+    assert actual_count == expected_count
+
+
+@pytest.mark.parametrize(
+    "input_data,expected_count", [
+        (['ab', '', 'abc', ''], 5),
+        (['ab', 'abcd', 'abc', ''], 2),
+        (['ab', '', 'abc', 'ab', '', 'ef', 'eg', ''], 5),
+    ]
+)
+def test_day_6_part_2(input_data, expected_count):
+    # arrange
+    test_obj = Day6('input/generic_input.txt')
+    test_obj.input_data = input_data
+    # act
+    actual_count = test_obj.part_2()
+    # assert
+    assert actual_count == expected_count
+
+
+@pytest.mark.skip(reason="not yet available")
+def test_day_7():
+    # arrange
+    test_obj = Day7('input/generic_input.txt')
     # act
     test_obj.part_1()
     test_obj.part_2()
