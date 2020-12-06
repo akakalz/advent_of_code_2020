@@ -89,9 +89,9 @@ def test_day_4():
         (['BFFFBFBRLR'], 69 * 8 + 5),
     ]
 )
-def test_day_5_row_col_parsing(line, expected_id):
+def test_day_5_row_col_parsing(line, expected_id, generic_input_file):
     # arrange
-    test_obj = Day5('input/generic_input.txt')
+    test_obj = Day5(generic_input_file)
     test_obj.input_data = line  # replace the data with out own
     # act
     expected_part_1_answer = expected_id
@@ -108,9 +108,9 @@ def test_day_5_row_col_parsing(line, expected_id):
         (['ab', '', 'abc', 'ab', '', 'ef', 'eg', ''], 8),
     ]
 )
-def test_day_6_part_1(input_data, expected_count):
+def test_day_6_part_1(input_data, expected_count, generic_input_file):
     # arrange
-    test_obj = Day6('input/generic_input.txt')
+    test_obj = Day6(generic_input_file)
     test_obj.input_data = input_data
     # act
     actual_count = test_obj.part_1()
@@ -125,9 +125,9 @@ def test_day_6_part_1(input_data, expected_count):
         (['ab', '', 'abc', 'ab', '', 'ef', 'eg', ''], 5),
     ]
 )
-def test_day_6_part_2(input_data, expected_count):
+def test_day_6_part_2(input_data, expected_count, generic_input_file):
     # arrange
-    test_obj = Day6('input/generic_input.txt')
+    test_obj = Day6(generic_input_file)
     test_obj.input_data = input_data
     # act
     actual_count = test_obj.part_2()
@@ -136,9 +136,9 @@ def test_day_6_part_2(input_data, expected_count):
 
 
 @pytest.mark.skip(reason="not yet available")
-def test_day_7():
+def test_day_7(generic_input_file):
     # arrange
-    test_obj = Day7('input/generic_input.txt')
+    test_obj = Day7(generic_input_file)
     # act
     test_obj.part_1()
     test_obj.part_2()
