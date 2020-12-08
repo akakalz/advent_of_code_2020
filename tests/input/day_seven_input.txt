@@ -1,0 +1,13 @@
+striped crimson bags contain 3 shiny gold bags, 2 shiny coral bags, spoopy yellow bags.
+spoopy yellow bags contain no bags.
+shiny gold bags contain 2 dark red bags.
+dark red bags contain 2 dark orange bags.
+dark orange bags contain 2 dark yellow bags.
+dark yellow bags contain 2 dark green bags.
+dark green bags contain 2 dark blue bags.
+dark blue bags contain 2 dark violet bags.
+dark violet bags contain no other bags.
+shiny coral bags contain 1 silly purple bags.
+silly purple bags contain 1 goopy silver bags.
+goopy silver bags contain 1 goopy gold bags.
+goopy gold bags contain 100 shiny gold bags.

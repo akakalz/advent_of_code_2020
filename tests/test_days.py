@@ -135,12 +135,14 @@ def test_day_6_part_2(input_data, expected_count, generic_input_file):
     assert actual_count == expected_count
 
 
-@pytest.mark.skip(reason="not yet available")
-def test_day_7(generic_input_file):
+def test_day_7():
     # arrange
-    test_obj = Day7(generic_input_file)
+    test_obj = Day7('input/day_seven_input.txt')
+    expected_part_1_answer = 5
+    expected_part_2_answer = 126
     # act
-    test_obj.part_1()
-    test_obj.part_2()
+    actual_part_1_answer = test_obj.part_1()
+    actual_part_2_answer = test_obj.part_2()
     # assert
-    assert False
+    assert actual_part_1_answer == expected_part_1_answer
+    assert actual_part_2_answer == expected_part_2_answer
