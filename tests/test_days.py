@@ -7,6 +7,7 @@ from day_05 import Day5
 from day_06 import Day6
 from day_07 import Day7
 from day_08 import Day8
+from day_09 import Day9
 
 
 def test_day_1():
@@ -154,6 +155,20 @@ def test_day_8():
     test_obj = Day8('input/day_eight_input.txt')
     expected_part_1_answer = 5
     expected_part_2_answer = 8
+    # act
+    actual_part_1_answer = test_obj.part_1()
+    actual_part_2_answer = test_obj.part_2()
+    # assert
+    assert actual_part_1_answer == expected_part_1_answer
+    assert actual_part_2_answer == expected_part_2_answer
+
+
+def test_day_9(generic_input_file):
+    # arrange
+    test_obj = Day9('input/day_nine_input.txt')
+    test_obj.part_1_preamble = 5
+    expected_part_1_answer = 127
+    expected_part_2_answer = 62
     # act
     actual_part_1_answer = test_obj.part_1()
     actual_part_2_answer = test_obj.part_2()
