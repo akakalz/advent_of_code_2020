@@ -4,7 +4,7 @@ from day import Day
 
 
 class Day3(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(3, file_name)
 
     def part_1(self):
@@ -28,7 +28,7 @@ class Day3(Day):
 
         return answer
 
-    def _traverse_slope(self, slope):
+    def _traverse_slope(self, slope: tuple):
         trees_this_run = 0
         y_index = slope[0]
         x_index = slope[1]

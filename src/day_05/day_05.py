@@ -5,7 +5,7 @@ import re
 
 
 class Day5(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(5, file_name)
         self.pattern = re.compile(r'^([FB]{7})([RL]{3})$')
 
@@ -40,8 +40,8 @@ class Day5(Day):
         return answer
 
     # these row/cols are just other ways of representing binary
-    def parse_row(self, string):
+    def parse_row(self, string: str):
         return int(string.replace('B', '1').replace('F', '0'), 2)
 
-    def parse_col(self, string):
+    def parse_col(self, string: str):
         return int(string.replace('R', '1').replace('L', '0'), 2)

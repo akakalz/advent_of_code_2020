@@ -5,7 +5,7 @@ import re
 
 
 class Day2(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(2, file_name)
         self.pattern = re.compile(r'^(\d+)-(\d+) ([a-z]): (.*)$')
 

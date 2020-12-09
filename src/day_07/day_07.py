@@ -2,10 +2,6 @@
 
 from day import Day
 import re
-import logging
-
-
-logger = logging.getLogger(__name__)
 
 
 full_rule_pattern = re.compile(r'^(.*?) bags contain (.*?).$')
@@ -13,7 +9,7 @@ contains_pattern = re.compile(r'^(\d+) (.*?) bags?$')
 
 
 class Day7(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(7, file_name)
 
     def part_1(self):
@@ -42,7 +38,7 @@ class Day7(Day):
                 rules[container] = contains
         return rules
 
-    def find_all_bags_that_contain_target(self, rules, target_bag):
+    def find_all_bags_that_contain_target(self, rules: dict, target_bag: str):
         searched_bags = {}
         for bag, contains in rules.items():
             if contains:
@@ -61,9 +57,9 @@ class Day7(Day):
 
     @staticmethod
     def _find_target_in_bags_helper(
-        rules,
-        search_bag,
-        target_bag
+        rules: dict,
+        search_bag: str,
+        target_bag: str
     ):
         if target_bag in rules.get(search_bag, []):
             return True
@@ -80,7 +76,7 @@ class Day7(Day):
                 sub_search_found.append(found)
             return any(sub_search_found)
 
-    def find_all_bags_under_target(self, rules, target_bag):
+    def find_all_bags_under_target(self, rules: dict, target_bag: str):
         counts = []
         contains = rules.get(target_bag, {})
         for color, count in contains.items():
@@ -95,11 +91,11 @@ class Day7(Day):
 
     @staticmethod
     def _find_bags_under_target_helper(
-        rules,
-        target_bag,
-        count_of_parent,
-        count,
-        counts
+        rules: dict,
+        target_bag: str,
+        count_of_parent: int,
+        count: int,
+        counts: list
     ):
         current_count = count * count_of_parent
         counts.append(current_count)

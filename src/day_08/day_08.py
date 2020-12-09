@@ -8,11 +8,11 @@ cmd_pattern = re.compile(r'^(...) ([+-])(\d+)$')
 
 
 class Day8(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(8, file_name)
 
     def part_1(self):
-        accumulator, infinite = self.process_commands()
+        accumulator, _ = self.process_commands()
         return accumulator
 
     def part_2(self):
@@ -39,7 +39,7 @@ class Day8(Day):
         return accumulator
 
     @staticmethod
-    def parse_command_string(string):
+    def parse_command_string(string: str):
         match = cmd_pattern.match(string)
         if match:
             cmd = match.group(1)

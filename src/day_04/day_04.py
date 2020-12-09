@@ -11,7 +11,7 @@ pid_pattern = re.compile(r'^\d{9}$')
 
 
 class Day4(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(4, file_name)
         self.required_fields = {
             'byr': Day4.valid_byr,
@@ -41,31 +41,31 @@ class Day4(Day):
                 for pair in pairs:
                     passport.update(**{k: v for (k, v) in [x.split(":") for x in pairs]})
 
-    def valid_passport_part_1(self, passport):
+    def valid_passport_part_1(self, passport: dict):
         missing = []
         for field in self.required_fields:
             if field not in passport:
                 missing.append(field)
         return not missing
 
-    def valid_passport_part_2(self, passport):
+    def valid_passport_part_2(self, passport: dict):
         return all([validate(passport.get(field))
                     for field, validate in self.required_fields.items()])
 
     @staticmethod
-    def valid_byr(byr):
+    def valid_byr(byr: str):
         return 1920 <= (int(byr) if byr is not None else 0) <= 2002
 
     @staticmethod
-    def valid_iyr(iyr):
+    def valid_iyr(iyr: str):
         return 2010 <= (int(iyr) if iyr is not None else 0) <= 2020
 
     @staticmethod
-    def valid_eyr(eyr):
+    def valid_eyr(eyr: str):
         return 2020 <= (int(eyr) if eyr is not None else 0) <= 2030
 
     @staticmethod
-    def valid_hgt(hgt):
+    def valid_hgt(hgt: str):
         match = hgt_pattern.match(hgt if hgt is not None else '')
         if match:
             if match.group(2) == 'in' and (59 <= int(match.group(1)) <= 76):
@@ -75,16 +75,16 @@ class Day4(Day):
         return False
 
     @staticmethod
-    def valid_hcl(hcl):
+    def valid_hcl(hcl: str):
         match = hcl_pattern.match(hcl if hcl is not None else '')
         return bool(match)
 
     @staticmethod
-    def valid_ecl(ecl):
+    def valid_ecl(ecl: str):
         match = ecl_pattern.match(ecl if ecl is not None else '')
         return bool(match)
 
     @staticmethod
-    def valid_pid(pid):
+    def valid_pid(pid: str):
         match = pid_pattern.match(pid if pid is not None else '')
         return bool(match)

@@ -2,7 +2,7 @@ from common import get_input, pad_left
 
 
 class Day:
-    def __init__(self, number, input_file):
+    def __init__(self, number: int, input_file: str):
         self.number = number
         self.input_data = get_input(input_file)
 

@@ -4,7 +4,7 @@ from day import Day
 
 
 class Day6(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(6, file_name)
 
     @property
@@ -32,7 +32,7 @@ class Day6(Day):
                         group[char] = 1
 
     @staticmethod
-    def part_1_counts(group):
+    def part_1_counts(group: dict):
         result = 0
         for key in group:
             if key != "people":
@@ -40,7 +40,7 @@ class Day6(Day):
         return result
 
     @staticmethod
-    def part_2_counts(group):
+    def part_2_counts(group: dict):
         result = 0
         for key in group:
             if key == "people":

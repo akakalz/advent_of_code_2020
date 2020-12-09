@@ -4,7 +4,7 @@ from day import Day
 
 
 class Day1(Day):
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(1, file_name)
         self.input_data = [int(x) for x in self.input_data]
 
@@ -36,6 +36,6 @@ class Day1(Day):
                     break
         return answer
 
-    def find_pair(self, in_num, goal_num):
+    def find_pair(self, in_num: int, goal_num: int):
         pair_num = goal_num - in_num
         return pair_num
