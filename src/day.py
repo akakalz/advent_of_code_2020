@@ -4,6 +4,7 @@ from common import get_input, pad_left
 class Day:
     def __init__(self, number: int, input_file: str):
         self.number = number
+        self.file_name = input_file
         self.input_data = get_input(input_file)
 
     def part_1(self):
