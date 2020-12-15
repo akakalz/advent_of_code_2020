@@ -10,6 +10,7 @@ from day_08 import Day8
 from day_09 import Day9
 from day_10 import Day10
 from day_11 import Day11
+from day_12 import Day12
 
 
 def test_day_1():
@@ -197,6 +198,122 @@ def test_day_11():
     test_obj = Day11('input/day_eleven_input.txt')
     expected_part_1_answer = 37
     expected_part_2_answer = 26
+    # act
+    actual_part_1_answer = test_obj.part_1()
+    actual_part_2_answer = test_obj.part_2()
+    # assert
+    assert actual_part_1_answer == expected_part_1_answer
+    assert actual_part_2_answer == expected_part_2_answer
+
+
+@pytest.mark.parametrize(
+    "wp_x,wp_y,_dir,magnitude,expected_result", [
+        (2, 1, 'L', 90, (-1, 2)),
+        (2, 1, 'R', 90, (1, -2)),
+        (2, -1, 'L', 90, (1, 2)),
+        (2, -1, 'R', 90, (-1, -2)),
+        (-2, -1, 'L', 90, (1, -2)),
+        (-2, -1, 'R', 90, (-1, 2)),
+        (-2, 1, 'L', 90, (-1, -2)),
+        (-2, 1, 'R', 90, (1, 2)),
+
+        (1, 2, 'L', 90, (-2, 1)),
+        (1, 2, 'R', 90, (2, -1)),
+        (1, -2, 'L', 90, (2, 1)),
+        (1, -2, 'R', 90, (-2, -1)),
+        (-1, -2, 'L', 90, (2, -1)),
+        (-1, -2, 'R', 90, (-2, 1)),
+        (-1, 2, 'L', 90, (-2, -1)),
+        (-1, 2, 'R', 90, (2, 1)),
+
+        (-2, 0, 'L', 90, (0, -2)),
+        (-2, 0, 'R', 90, (0, 2)),
+        (2, 0, 'L', 90, (0, 2)),
+        (2, 0, 'R', 90, (0, -2)),
+        (0, -2, 'L', 90, (2, 0)),
+        (0, -2, 'R', 90, (-2, 0)),
+        (0, 2, 'L', 90, (-2, 0)),
+        (0, 2, 'R', 90, (2, 0)),
+
+        (-2, 0, 'L', 180, (2, 0)),
+        (-2, 0, 'R', 180, (2, 0)),
+        (2, 0, 'L', 180, (-2, 0)),
+        (2, 0, 'R', 180, (-2, 0)),
+        (0, -2, 'L', 180, (0, 2)),
+        (0, -2, 'R', 180, (0, 2)),
+        (0, 2, 'L', 180, (0, -2)),
+        (0, 2, 'R', 180, (0, -2)),
+    ]
+)
+def test_day_12_rotate_waypoint(
+    wp_x,
+    wp_y,
+    _dir,
+    magnitude,
+    expected_result
+):
+    # arrange
+    # act
+    actual_result = Day12.rotate_waypont(
+        wp_x, wp_y, _dir, magnitude
+    )
+    # assert
+    assert actual_result == expected_result
+
+
+@pytest.mark.parametrize(
+    "wp_x,wp_y,magnitude,expected_result", [
+        (2, 0, 1, (2, 0)),
+        (2, 0, 2, (4, 0)),
+        (1, 0, 1, (1, 0)),
+        (1, 0, 2, (2, 0)),
+
+        (0, 2, 1, (0, 2)),
+        (0, -2, 2, (0, -4)),
+        (0, 0, 1, (0, 0)),
+        (0, 0, 2, (0, 0)),
+
+        (2, 1, 1, (2, 1)),
+        (2, 1, 2, (4, 2)),
+        (1, 2, 1, (1, 2)),
+        (1, 2, 2, (2, 4)),
+
+        (-2, 1, 1, (-2, 1)),
+        (-2, 1, 2, (-4, 2)),
+        (-1, 2, 1, (-1, 2)),
+        (-1, 2, 2, (-2, 4)),
+
+        (-2, -1, 1, (-2, -1)),
+        (-2, -1, 2, (-4, -2)),
+        (-1, -2, 1, (-1, -2)),
+        (-1, -2, 2, (-2, -4)),
+
+        (2, -1, 1, (2, -1)),
+        (2, -1, 2, (4, -2)),
+        (1, -2, 1, (1, -2)),
+        (1, -2, 2, (2, -4)),
+    ]
+)
+def test_day_12_move_to_waypoint(
+    wp_x,
+    wp_y,
+    magnitude,
+    expected_result
+):
+    # arrange
+    # act
+    actual_result = Day12.move_to_waypoint(
+        0, 0, wp_x, wp_y, magnitude
+    )
+    # assert
+    assert actual_result == expected_result
+
+
+def test_day_12():
+    # arrange
+    test_obj = Day12('input/day_twelve_input.txt')
+    expected_part_1_answer = 25
+    expected_part_2_answer = 286
     # act
     actual_part_1_answer = test_obj.part_1()
     actual_part_2_answer = test_obj.part_2()
