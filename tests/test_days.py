@@ -13,6 +13,7 @@ from day_11 import Day11
 from day_12 import Day12
 from day_13 import Day13
 from day_14 import Day14
+from day_15 import Day15
 
 
 def test_day_1():
@@ -354,3 +355,24 @@ def test_day_14():
     # assert
     assert actual_part_1_answer == expected_part_1_answer
     assert actual_part_2_answer == expected_part_2_answer
+
+
+@pytest.mark.parametrize(
+    "input_data,expected_count", [
+        (['0,3,6'], 436),
+        (['1,3,2'], 1),
+        (['2,1,3'], 10),
+        (['1,2,3'], 27),
+        (['2,3,1'], 78),
+        (['3,2,1'], 438),
+        (['3,1,2'], 1836),
+    ]
+)
+def test_day_15_part_1(input_data, expected_count, generic_input_file):
+    # arrange
+    test_obj = Day15(generic_input_file)
+    test_obj.input_data = input_data
+    # act
+    actual_count = test_obj.part_1()
+    # assert
+    assert actual_count == expected_count
