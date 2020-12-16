@@ -34,9 +34,6 @@ class Day12(Day):
         wp_y = 1
 
         for line in self.input_data:
-            print(line)
-            print(x, y)
-            print(wp_x, wp_y)
             match = dir_pattern.match(line)
             if match:
                 move = match.group(1)

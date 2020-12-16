@@ -1,9 +1,9 @@
 from common import pad_left
-from __init__ import days
+from __init__ import current_day
 
 
 if __name__ == "__main__":
-    for i, Day in enumerate(days, start=1):
+    for i, Day in enumerate(current_day, start=13):
         d = Day(f"input/input_puzzle_{pad_left(str(i), 2, '0')}.txt")
         print(f"== {str(d)} ====================")
         print(f"    part 1: {d.part_1()}")
