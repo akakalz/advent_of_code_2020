@@ -12,6 +12,7 @@ from day_10 import Day10
 from day_11 import Day11
 from day_12 import Day12
 from day_13 import Day13
+from day_14 import Day14
 
 
 def test_day_1():
@@ -330,6 +331,25 @@ def test_day_13():
     expected_part_2_answer = 1068781
     # act
     actual_part_1_answer = test_obj.part_1()
+    actual_part_2_answer = test_obj.part_2()
+    # assert
+    assert actual_part_1_answer == expected_part_1_answer
+    assert actual_part_2_answer == expected_part_2_answer
+
+
+def test_day_14():
+    # arrange
+    test_obj = Day14('input/day_fourteen_input.txt')
+    expected_part_1_answer = 165
+    expected_part_2_answer = 208
+    # act
+    actual_part_1_answer = test_obj.part_1()
+    test_obj.input_data = [
+        'mask = 000000000000000000000000000000X1001X',
+        'mem[42] = 100',
+        'mask = 00000000000000000000000000000000X0XX',
+        'mem[26] = 1',
+    ]
     actual_part_2_answer = test_obj.part_2()
     # assert
     assert actual_part_1_answer == expected_part_1_answer

@@ -11,9 +11,10 @@ from day_10 import Day10
 from day_11 import Day11
 from day_12 import Day12
 from day_13 import Day13
+from day_14 import Day14
 
 
 days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11,
-        Day12, Day13]
+        Day12, Day13, Day14]
 
-current_day = [Day13]
+current_day = [Day14]
